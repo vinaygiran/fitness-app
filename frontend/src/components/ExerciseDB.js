@@ -17,8 +17,8 @@ const ExercisePage = () => {
       method: "GET",
       url: `https://exercisedb.p.rapidapi.com/exercises/bodyPart/${selectedMuscle}`,
       headers: {
-        "X-RapidAPI-Key": "3190d2cd3amshe401585bbe87576p18b44djsn7669ffd89aa8",
-        "X-RapidAPI-Host": "exercisedb.p.rapidapi.com",
+        'x-rapidapi-key': '2ce84ead6amsh4df47248b538a61p139890jsna24dfa53769a',
+        'x-rapidapi-host': 'exercisedb.p.rapidapi.com',
       },
     };
 
@@ -68,16 +68,18 @@ const ExercisePage = () => {
         <div className="exercise-container">
           {currentExercises.map((exercise) => (
             <div key={exercise.id} className="exercise-card">
-              <h3>{capitalizeFirstLetter(exercise.name)}</h3>
-              <div className="gif-container">
-                <img
-                  src={exercise.gifUrl}
-                  alt={exercise.name}
-                  className="exercise-gif"
-                />
-              </div>
-            </div>
-          ))}
+  <h3>{capitalizeFirstLetter(exercise.name)}</h3>
+  <div className="gif-container">
+    <img
+      // Fix: Force secure https protocol
+      src={exercise.gifUrl?.replace('http:', 'https:')} 
+      alt={exercise.name}
+      loading="lazy"
+      className="exercise-gif"
+    />
+  </div>
+</div>
+        ))}
         </div>
       ) : (
         <h3>Exercises and demonstrations will be displayed here.</h3>
