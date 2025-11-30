@@ -79,6 +79,7 @@ const Header = () => {
             <NavLink to="/pages/workouts">Workout Database</NavLink>
             <NavLink to="/pages/nutrition-checker">Nutrition Checker</NavLink>
             <NavLink to="/pages/bmr-calculator">BMR</NavLink>
+            <NavLink to="/pages/ask-ai">Ask AI</NavLink>
           </Nav>
           <Nav>
             {userInfo ? (

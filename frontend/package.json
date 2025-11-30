@@ -11,6 +11,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "dotenv": "^16.3.1",
+    "lucide-react": "^0.555.0",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.0.0",
@@ -50,9 +51,13 @@
     "@babel/preset-react": "^7.22.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
+    "autoprefixer": "^10.4.22",
     "babel-jest": "^29.5.0",
+    "daisyui": "^5.5.5",
     "jest": "^27.5.1",
     "msw": "^1.2.1",
-    "redux-mock-store": "^1.5.4"
+    "postcss": "^8.5.6",
+    "redux-mock-store": "^1.5.4",
+    "tailwindcss": "^3.4.18"
   }
 }

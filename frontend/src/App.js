@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import About from "./pages/About";
+import AskAI from "./pages/AskAI";
 import NotFound from "./pages/NotFound";
 
 const App = () => {
@@ -35,6 +36,7 @@ const App = () => {
             element={<NutritionChecker />}
           />
           <Route path="/pages/bmr-calculator" element={<BMRCalculator />} />
+          <Route path="/pages/ask-ai" element={<AskAI />} />
           <Route path="/pages/about" element={<About />} />
 
           {/* Public Route */}

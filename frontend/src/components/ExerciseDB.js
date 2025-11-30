@@ -7,6 +7,7 @@ const ExercisePage = () => {
   const [exercises, setExercises] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [exercisesPerPage] = useState(10);
+  const [imageLoading, setImageLoading] = useState({});
 
   const handleMuscleChange = (e) => {
     setSelectedMuscle(e.target.value);
@@ -25,6 +26,12 @@ const ExercisePage = () => {
     try {
       const response = await axios.request(options);
       setExercises(response.data);
+      // Initialize all images as loading
+      const loadingState = {};
+      response.data.forEach((exercise) => {
+        loadingState[exercise.id] = true;
+      });
+      setImageLoading(loadingState);
     } catch (error) {
       console.error(error);
     }
@@ -43,6 +50,20 @@ const ExercisePage = () => {
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleImageLoad = (id) => {
+    setImageLoading((prev) => ({
+      ...prev,
+      [id]: false,
+    }));
+  };
+
+  const handleImageError = (id) => {
+    setImageLoading((prev) => ({
+      ...prev,
+      [id]: false,
+    }));
   };
 
   return (
@@ -70,12 +91,20 @@ const ExercisePage = () => {
             <div key={exercise.id} className="exercise-card">
   <h3>{capitalizeFirstLetter(exercise.name)}</h3>
   <div className="gif-container">
+    {imageLoading[exercise.id] && (
+      <div className="image-loader">
+        <div className="spinner"></div>
+      </div>
+    )}
     <img
-      // Fix: Force secure https protocol
-      src={exercise.gifUrl?.replace('http:', 'https:')} 
+      src={
+        `https://api.allorigins.win/raw?url=${exercise.gifUrl}`
+      }
       alt={exercise.name}
       loading="lazy"
       className="exercise-gif"
+      onLoad={() => handleImageLoad(exercise.id)}
+      onError={() => handleImageError(exercise.id)}
     />
   </div>
 </div>
